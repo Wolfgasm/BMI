@@ -10,15 +10,38 @@ namespace BmiHomework
     {
         static void Main(string[] args)
         {
+            string[] state = new string[] {"過輕", "正常", "過重", "輕度肥胖", "中度肥胖", "跟你媽一樣胖" };
+            int n = 0;
+            
+
             // 請使用者輸入身高並且自動轉換為公尺單位
             Console.Write("請輸入您的身高(公分)");
             float height = float.Parse(Console.ReadLine()) / 100;
+
             // 請使用者輸入體重
             Console.Write("請輸入您的體重(公斤)");
             float weight = float.Parse(Console.ReadLine());
 
+            // 計算BMI
+            double bmi_ = weight / Math.Pow(height, 2);
+
+            //判斷過輕過重
+            if (bmi_ < 18.5)
+                n = 0;
+            else if (bmi_ >= 18.5 && bmi_ < 24)
+                n = 1;
+            else if (bmi_ >= 24 && bmi_ < 27)
+                n = 2;
+            else if (bmi_ >= 27 && bmi_ < 30)
+                n = 3;
+            else if (bmi_ >= 30 && bmi_ < 35)
+                n = 4;
+            else
+                n = 5;
+
+
             // 計算BMI及顯示結果
-            Console.Write("您的BMI為" + weight / Math.Pow(height, 2));
+            Console.Write("您的BMI為" + bmi_+"_屬於:"+state[n]);
 
             // 暫停畫面用
             Console.ReadLine();
