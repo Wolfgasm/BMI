@@ -12,6 +12,8 @@ namespace BmiHomework
         {
             string[] state = new string[] {"過輕", "正常", "過重", "輕度肥胖", "中度肥胖", "跟你媽一樣胖" };
             int n = 0;
+
+            string ifSoldier = "";
             
 
             // 請使用者輸入身高並且自動轉換為公尺單位
@@ -39,9 +41,19 @@ namespace BmiHomework
             else
                 n = 5;
 
+            //判斷是否需當兵
+
+            if (bmi_ > 31.5 || bmi_ < 16.5)
+                ifSoldier = "您不須當兵";
+            else if ((bmi_ >= 16.5 && bmi_ < 17) || (bmi_ > 31 && bmi_ <= 31.5))
+                ifSoldier = "您須服替代役";
+            else
+                ifSoldier = "您需常備兵役";
+
+
 
             // 計算BMI及顯示結果
-            Console.Write("您的BMI為" + bmi_+"_屬於:"+state[n]);
+            Console.Write("您的BMI為" + bmi_+"_屬於:"+state[n]+"，"+ifSoldier);
 
             // 暫停畫面用
             Console.ReadLine();
